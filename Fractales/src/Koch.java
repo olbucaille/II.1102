@@ -8,40 +8,37 @@ public class Koch {
 	
 	public static float size= 0.2f; 
 	static int PAUSE = 50;
-	static Scanner sc = new Scanner(System.in);
+
 	
 	public static void main (String [] args){
-		float y=Y_MAX;
-		float x = X_MAX/2;
-		
-		
-	
 
-		StdDraw.setXscale(-size, X_MAX + size);
+			StdDraw.setXscale(-size, X_MAX + size);
 		StdDraw.setYscale(-size, Y_MAX+size);
 		
 		Superkoch(5);
 
 			
-		}
-	public static void Superkoch( int detail)
-	{
-		koch(new Couple(0,90), new Couple(90,90),detail);
-		koch(new Couple(45,25), new Couple(0,90),detail);
-		koch(new Couple(90,90), new Couple(45,25),detail);
+		
 	}
 	
+	
+	public static void Superkoch( int detail)
+	{
+		koch (new Couple(0,90), new Couple(90,90),detail);
+		koch (new Couple(45,25),new Couple(0,90),detail);
+		koch (new Couple(90,90),new Couple(45,25),detail);
+	}
+
+		
 	private static void koch(Couple debut,Couple fin, int detail)
 	{
 					
 		if(detail == 0)
 			StdDraw.line(debut.x,debut.y, fin.x,fin.y);
-		else{
-	
-			
+		else
+		{
 		
-			
-			 Couple Aa,Bb,Cc;
+		 Couple Aa,Bb,Cc;
 			 
 			Aa = computeAa(debut, fin);
 			Bb = computeBb(debut, fin);
@@ -70,8 +67,9 @@ public class Koch {
 	}
 
   private static Couple computeCc(Couple Aa, Couple Bb)
-	{
-	  
+	
+
+  {
 	  double x = ((Aa.x+Bb.x)*Math.cos(Math.toRadians(60)))-((Bb.y-Aa.y)*Math.sin(Math.toRadians(60)));
 	  double y = ((Aa.y+Bb.y)*Math.cos(Math.toRadians(60)))+((Bb.x-Aa.x)*Math.sin(Math.toRadians(60)));		 
 	  return new Couple(x,y);	
